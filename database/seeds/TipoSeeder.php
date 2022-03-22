@@ -15,5 +15,14 @@ class TipoSeeder extends Seeder
         DB::table('tipo')->insert([
             'tip_descripcion'=>'Sueldos'
         ]);
+        DB::table('tipo')->insert([
+            'tip_descripcion'=>'Alimentación'
+        ]);
+        DB::table('tipo')->insert([
+            'tip_descripcion'=>'Ocio'
+        ]);
+        DB::table('tipo')->insert([
+            'tip_descripcion'=>'Educación'
+        ]);
     }
 }

@@ -31,6 +31,9 @@ Route::get('/permisos/edit/{per_id}','PermisosController@edit')->name('permisos.
 Route::post('/permisos/update/{per_id}','PermisosController@update')->name('permisos.update');
 Route::post('/permisos/destroy/{per_id}','PermisosController@destroy')->name('permisos.destroy');
 
+Route::get('/movimiento','MovimientoController@index')->name('movimiento');
+Route::get('/movimiento/create','MovimientoController@create')->name('movimiento.create');
+
 
 
 

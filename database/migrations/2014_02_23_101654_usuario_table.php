@@ -21,7 +21,7 @@ class UsuarioTable extends Migration
             $table->string('usu_apellido');
             $table->string('usu_cedula');
             $table->string('usu_telefono');
-            $table->string('usu_estado')->default(1);
+            //$table->string('usu_estado')->default(1);
             $table->date('usu_fecha_nacimiento');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

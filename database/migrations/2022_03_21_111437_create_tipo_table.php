@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TipoEgresosTable extends Migration
+class CreateTipoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class TipoEgresosTable extends Migration
      */
     public function up()
     {
-      Schema::create('tipo_egresos', function (Blueprint $table) {
+        Schema::create('tipo', function (Blueprint $table) {
             $table->id('tip_id');
-            $table->float('tip_egr');
-           
-           
-        });  
+            $table->string('tip_descripcion');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,6 +27,6 @@ class TipoEgresosTable extends Migration
      */
     public function down()
     {
-          Schema::dropIfExists('tipo_egresos');
+        Schema::dropIfExists('tipo');
     }
 }

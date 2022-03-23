@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tipo;
 
 class TipoController extends Controller
 {
@@ -13,7 +14,9 @@ class TipoController extends Controller
      */
     public function index()
     {
-        //
+        $tipo=Tipo::all();
+        return view('tipo.index')
+        ->with('tipo',$tipo);
     }
 
     /**
@@ -23,7 +26,7 @@ class TipoController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipo.create');
     }
 
     /**
@@ -34,7 +37,9 @@ class TipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->all();
+        Tipo::create($data);
+        return redirect(route('tipo'));
     }
 
     /**
@@ -56,7 +61,11 @@ class TipoController extends Controller
      */
     public function edit($id)
     {
-        //
+         $tipo=Tipo::find($id);
+        return view('tipo.edit')
+        ->with('tipo',$tipo)
+        ;
+
     }
 
     /**
@@ -68,7 +77,10 @@ class TipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $Tip=Tipo::find($id);
+        $Tip->update($request->all());
+         return redirect(route('tipo'));
+             
     }
 
     /**
@@ -79,6 +91,7 @@ class TipoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tipo::destroy($id);
+        return redirect(route('tipo'));
     }
 }

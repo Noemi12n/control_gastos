@@ -42,6 +42,19 @@ Route::get('/tipo/edit/{tip_id}','TipoController@edit')->name('tipo.edit');
 Route::post('/tipo/update/{tip_id}','TipoController@update')->name('tipo.update');
 Route::post('/tipo/destroy/{tip_id}','TipoController@destroy')->name('tipo.destroy');
 
+Route::get('/movimiento','MovimientoController@index')->name('movimiento');
+Route::get('/movimiento/create','MovimientoController@create')->name('movimiento.create');
+Route::post('/movimiento/store','MovimientoController@store')->name('movimiento.store');
+
+Route::get('/movimiento/edit/{mov_id}','MovimientoController@edit')->name('movimiento.edit');
+Route::post('/movimiento/update/{mov_id}','MovimientoController@update')->name('movimiento.update');
+Route::post('/movimiento/destroy/{mov_id}','MovimientoController@destroy')->name('movimiento.destroy');
+
+
+Route::post('/movimiento/search','MovimientoController@index')->name('movimiento.search');
+
+
+
 
 
 

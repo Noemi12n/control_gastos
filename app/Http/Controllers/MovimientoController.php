@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\tipo;
+use App\User;
+use App\movimiento;
+use DB;
+
 
 class MovimientoController extends Controller
 {
@@ -12,10 +17,28 @@ class MovimientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('movimiento.index');
+        $data=$request->all();
+        $desde=date('Y-m-d');
+        $hasta=date('Y-m-d');
+
+        if(isset($data['desde'])){
+        $desde=$data['desde'];
+        $hasta=$data['hasta'];
+    }
+
+        $movimiento=DB::select("
+            SELECT * FROM movimiento m 
+            JOIN users u ON m.usu_id=u.usu_id
+            JOIN tipo t ON m.tip_id=t.tip_id
+            WHERE m.mov_fecha BETWEEN '$desde' AND '$hasta'
+            ");
+        return view('movimiento.index')
+        ->with('movimiento',$movimiento)
+        ->with('desde',$desde)
+        ->with('hasta',$hasta)
+        ;
     }
 
     /**
@@ -25,9 +48,12 @@ class MovimientoController extends Controller
      */
     public function create()
     {
-        $tipos=tipo::all();
-        return view('movimiento.create')
-        ->with('tipo',$tipos);
+         $movimiento=movimiento::all();
+         $tipo=tipo::all();
+         $user=User::all();
+         return view('movimiento.create')
+         ->with ('tipo', $tipo)
+         ->with ('user', $user);
     }
 
     /**
@@ -38,7 +64,11 @@ class MovimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $data=$request->all();
+            //dd($data);
+           $data['usu_id']=Auth::user()->usu_id;
+            Movimiento::create( $data);
+            return redirect(route('movimiento'));
     }
 
     /**
@@ -60,8 +90,17 @@ class MovimientoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movimiento=Movimiento::find($id);
+        $tipo=tipo::all();
+        $user=User::all();
+        return view('movimiento.edit')
+        ->with('movimiento',$movimiento)
+        ->with ('tipo', $tipo)
+        ->with ('user', $user);
+
+        
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -84,5 +123,7 @@ class MovimientoController extends Controller
     public function destroy($id)
     {
         //
+        movimiento::destroy($id);
+        return redirect(route('movimiento'));
     }
 }

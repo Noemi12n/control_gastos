@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section(@content)
-<script src="{{asset('js/movimiento.js')}}"></script>
-<form action="{{route('movimiento.store')}}" method="POST" onsubmit="return validar()">
+
+<form action="{{route('movimiento.update',$movimiento->mov_id)}}" method="POST">
+	
 
 	@csrf
 	<div class="container">
@@ -33,11 +34,12 @@
 	              	Egresos:<input type="radio" name="mov_tipo"  id="mov_tipo" value="0">
 	              </div>
 	              <div class="col-md-12 mt-3">
-	              	<button type="submit" class="btn btn-success">Guardar</button>
+	              	<button class="btn btn-success">Guardar</button>
 	              </div>
 	          </div>
 	    </div>
 
 </form>
+
 
 @endsection

@@ -8,6 +8,7 @@ use App\tipo;
 use App\User;
 use App\movimiento;
 use DB;
+use PDF;
 
 
 class MovimientoController extends Controller
@@ -19,10 +20,23 @@ class MovimientoController extends Controller
      */
     public function index(Request $request)
     {
+          // $pdf = App('dompdf.wrapper');
+           //$pdf->loadHTML("<h1 style=''>Hola Mundo PDF</h1>");
+            //return $pdf->stream();
+
+       // $data=[
+         //   'fecha'=>date('Y-m-d'),
+         //   'user'=>Auth::user()->usu_nombre
+        //];
+
+        //$pdf = PDF::loadView('movimiento.reporte',$data);
+              // return $pdf->stream('reporte.pdf');
+
+
         $data=$request->all();
+        //dd($data);
         $desde=date('Y-m-d');
         $hasta=date('Y-m-d');
-
         if(isset($data['desde'])){
         $desde=$data['desde'];
         $hasta=$data['hasta'];
@@ -34,6 +48,14 @@ class MovimientoController extends Controller
             JOIN tipo t ON m.tip_id=t.tip_id
             WHERE m.mov_fecha BETWEEN '$desde' AND '$hasta'
             ");
+        
+         //boton del pdf
+        if(isset($data['btn_pdf'])){ 
+       $data=['movimiento'=>$movimiento];
+       $pdf = PDF::loadView('movimiento.reporte',$data);
+        return $pdf->stream('reporte.pdf');
+           }
+
         return view('movimiento.index')
         ->with('movimiento',$movimiento)
         ->with('desde',$desde)

@@ -133,7 +133,13 @@ class MovimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $movimiento=Movimiento::find($id);
+        $tipo=tipo::all();
+        $user=User::all();
+        return view('movimiento.find')
+        ->with('movimiento',$movimiento)
+        ->with ('tipo', $tipo)
+        ->with ('user', $user);
     }
 
     /**

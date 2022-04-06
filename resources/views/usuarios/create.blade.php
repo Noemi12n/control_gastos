@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
+    <script src="{{asset('js/usuarios.js')}}"></script>
 	<h4 class="bg-dark text-white ">Formulario de registro</h4>
-	<form action="{{route('usuarios.store')}}" method="POST" >
+	<form action="{{route('usuarios.store')}}" method="POST" onsubmit="return validar()">
 		@csrf
 		<label for="">Detalle  de Nombre</label>
-		<input type="text" name="usu_nombre" id="usu_apellido" >
+		<input type="text" name="usu_nombre" id="usu_nombre" >
 
 		<label for="">Detalle  de Apellido</label>
 		<input type="text" name="usu_apellido" id="usu_apellido" >

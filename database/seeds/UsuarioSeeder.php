@@ -21,7 +21,6 @@ class UsuarioSeeder extends Seeder
             'email'=>'noemiunapucha123@gmail.com',
             'password'=>bcrypt('123456789'),
             'created_at'=>date('Y-m-d H:i'),
-            'per_id'=>1
         ]);
     
     }

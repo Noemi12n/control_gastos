@@ -136,7 +136,7 @@ class MovimientoController extends Controller
     $movimiento=Movimiento::find($id);
         $tipo=tipo::all();
         $user=User::all();
-        return view('movimiento.find')
+        return view('movimiento.index')
         ->with('movimiento',$movimiento)
         ->with ('tipo', $tipo)
         ->with ('user', $user);

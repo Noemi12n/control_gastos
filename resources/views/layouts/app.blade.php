@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>Control Gasto</title>
+    <marquee BEHAVIOR=ALTERNATE>   <title>Control Gasto 1</title>  </marquee > 
 
 
     <!-- Scripts -->
@@ -32,13 +32,16 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                    
                       @guest
-                <img src="https://i.pinimg.com/originals/0b/63/1a/0b631ad754b602c813617ea6ad7e9204.png" width="30" height="30" class="d-inline-block align-top"       alt="">CONTROL DE GASTOS
+                     
+                <img src="https://i.pinimg.com/originals/0b/63/1a/0b631ad754b602c813617ea6ad7e9204.png" width="30" height="30" 
+                class="d-inline-block align-top"alt="">CONTROL DE GASTOS
+
                 @else
                     <img src="https://wallo.com/media/aplicacion-control-gastos-android.png" width="30" height="30" class="d-inline-block align-top"   alt="">CONTROL DE GASTOS
-                      <a class="nav-item nav-link" href="{{route('usuarios')}}">Usuarios</a>
-                      <a class="nav-item nav-link" href="{{route('permisos')}}">Permisos</a>
+                      <a class="nav-item nav-link"  href="{{route('usuarios')}}">Usuarios</a>
                       <a class="nav-item nav-link" href="{{route('movimiento')}}">Movimiento</a>
                       <a class="nav-item nav-link" href="{{route('tipo')}}">Tipo</a>
+                       <a class="nav-item nav-link" target="_blank" href="https://github.com/Noemi12n/control_gastos">GitHud</a>
                       
                 @endguest
                 </a>

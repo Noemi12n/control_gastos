@@ -2,11 +2,13 @@
 
 @section('content')
 <div class="container">
-   <div  align="center"> <img  width="250" height="250" src="https://cdn-icons-png.flaticon.com/512/1924/1924289.png"></div>
+  
     <div class="row justify-content-center" width="50" height="50">
         <div class="col-md-8">
             <div class="card">
+
                 <div class="card-header" align="center">{{ __('Ingreso al Sistema') }}</div>
+                <marquee BEHAVIOR=ALTERNATE>    <div  align="center"> <img  width="250" height="250" src="https://cdn-icons-png.flaticon.com/512/1924/1924289.png"></div>  </marquee> 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

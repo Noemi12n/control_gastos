@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Inicio</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -80,9 +80,12 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+             <marquee BEHAVIOR=ALTERNATE>   <div class="title m-b-md">
+
                     CONTROL GASTO 
-                </div>
+                     <div  align="center"> <img  width="250" height="250" src="https://cdn-icons-png.flaticon.com/512/1924/1924289.png">
+                     </div>
+                </div> </marquee> 
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>

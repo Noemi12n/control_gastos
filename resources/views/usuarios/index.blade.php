@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="bg-dark text-white">Lista de usuarios</h2>
+  <h2 class="bg-dark text-white">Lista de usuarios</h2>  
 
 	<table class="table">
 		<th> # </th>
